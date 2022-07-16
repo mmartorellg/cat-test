@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/fee")
 @Slf4j
-public class PriceController {
+public class FeeController {
 
     private final PriceCommand priceCommand;
     private final PriceQueryMapperController priceQueryMapperController;
 
-    public PriceController(PriceCommand priceCommand, PriceQueryMapperController priceQueryMapperController) {
+    public FeeController(PriceCommand priceCommand, PriceQueryMapperController priceQueryMapperController) {
         this.priceCommand = priceCommand;
         this.priceQueryMapperController = priceQueryMapperController;
     }
