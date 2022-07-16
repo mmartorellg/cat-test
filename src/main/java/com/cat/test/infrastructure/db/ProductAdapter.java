@@ -31,7 +31,7 @@ public class ProductAdapter implements ProductRepository {
 
     @Override
     public List<Product> getAllProducts() {
-        return genericAdapter.getAll("", ProductDao.class).stream().map(productMapper::toDomain)
+        return genericAdapter.getAll(ALL, ProductDao.class).stream().map(productMapper::toDomain)
                 .collect(Collectors.toList());
     }
 
@@ -39,27 +39,27 @@ public class ProductAdapter implements ProductRepository {
     public Product getProduct(Integer id) {
         HashMap<String, Object> params = new HashMap<>();
         params.put("id", id);
-        return productMapper.toDomain(genericAdapter.getOne("", params, ProductDao.class).orElse(null));
+        return productMapper.toDomain(genericAdapter.getOne(ONE_BY_ID, params, ProductDao.class).orElse(null));
     }
 
     @Override
     public Integer saveProduct(Product product) {
         Map<String, Object> addressMap = productMapper.toMap(product);
         MapSqlParameterSource parameters = new MapSqlParameterSource(addressMap);
-        return this.genericAdapter.save("", parameters);
+        return this.genericAdapter.save(INSERT, parameters);
     }
 
     @Override
     public Boolean updateProduct(Product product) {
         Map<String, Object> addressMap = productMapper.toMap(product);
         MapSqlParameterSource parameters = new MapSqlParameterSource(addressMap);
-        return !this.genericAdapter.update("", parameters).equals(0);
+        return !this.genericAdapter.update(UPDATE, parameters).equals(0);
     }
 
     @Override
     public Boolean deleteProduct(Integer id) {
         MapSqlParameterSource parameters = new MapSqlParameterSource()
                 .addValue("id", id);
-        return this.genericAdapter.delete("", parameters);
+        return this.genericAdapter.delete(DELETE, parameters);
     }
 }
