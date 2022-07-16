@@ -1,10 +1,14 @@
 package com.cat.test.infrastructure.db.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Value;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Value
+@Data
+@Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class BrandDao {
     Integer id;
     String brand;

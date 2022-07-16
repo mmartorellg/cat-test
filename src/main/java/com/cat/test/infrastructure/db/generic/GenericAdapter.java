@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Component
@@ -19,7 +20,7 @@ public class GenericAdapter {
         this.template = template;
     }
 
-    public <T> Optional<T> getOne(String sql, Object params, Class<T> clazz) {
+    public <T> Optional<T> getOne(String sql, Map<String, Object> params, Class<T> clazz) {
         return getQuery(sql, params, clazz).stream().findFirst();
     }
 
@@ -28,9 +29,8 @@ public class GenericAdapter {
         return getQuery(sql, params, clazz);
     }
 
-    private <T> List<T> getQuery(String sql, Object params, Class<T> clazz) {
-        return template.query(sql, new BeanPropertySqlParameterSource(params),
-                new BeanPropertyRowMapper<>(clazz));
+    private <T> List<T> getQuery(String sql, Map<String, Object> params, Class<T> clazz) {
+        return template.query(sql, params, new BeanPropertyRowMapper<>(clazz));
     }
 
     public Integer save(String sql, MapSqlParameterSource params) {

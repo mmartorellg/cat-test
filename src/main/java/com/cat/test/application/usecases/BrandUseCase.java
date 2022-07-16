@@ -6,6 +6,7 @@ import com.cat.test.domain.Brand;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Component
 public class BrandUseCase implements BrandCommand {
@@ -23,7 +24,10 @@ public class BrandUseCase implements BrandCommand {
 
     @Override
     public Brand getBrand(Integer id) {
-        return brandRepository.getBrand(id);
+        Brand result = brandRepository.getBrand(id);
+        if (result == null)
+            throw new NoSuchElementException();
+        return result;
     }
 
     @Override
@@ -33,11 +37,15 @@ public class BrandUseCase implements BrandCommand {
 
     @Override
     public void updateBrand(Integer id, Brand brand) {
+        if (!id.equals(brand.getId()))
+            throw new NoSuchElementException();
+        getBrand(id);
         brandRepository.updateBrand(brand);
     }
 
     @Override
     public void deleteBrand(Integer id) {
+        getBrand(id);
         brandRepository.deleteBrand(id);
     }
 }

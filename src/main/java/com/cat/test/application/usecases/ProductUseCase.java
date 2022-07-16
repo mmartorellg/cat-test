@@ -6,6 +6,7 @@ import com.cat.test.domain.Product;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Component
 public class ProductUseCase implements ProductCommand {
@@ -23,7 +24,10 @@ public class ProductUseCase implements ProductCommand {
 
     @Override
     public Product getProduct(Integer id) {
-        return productRepository.getProduct(id);
+        Product result = productRepository.getProduct(id);
+        if (result == null)
+            throw new NoSuchElementException();
+        return result;
     }
 
     @Override
@@ -33,11 +37,15 @@ public class ProductUseCase implements ProductCommand {
 
     @Override
     public void updateProduct(Integer id, Product product) {
+        if (!id.equals(product.getId()))
+            throw new NoSuchElementException();
+        getProduct(id);
         productRepository.updateProduct(product);
     }
 
     @Override
     public void deleteProduct(Integer id) {
+        getProduct(id);
         productRepository.deleteProduct(id);
     }
 }

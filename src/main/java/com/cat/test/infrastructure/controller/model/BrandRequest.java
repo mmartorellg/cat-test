@@ -1,10 +1,16 @@
 package com.cat.test.infrastructure.controller.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Value;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Value
+@Getter
+@Setter
+@NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class BrandRequest {
     Integer id;
     String brand;

@@ -1,13 +1,13 @@
 create table BRAND
 (
     ID              integer      not null,
-    NAME            varchar(255) not null,
+    BRAND            varchar(255) not null,
     primary key (ID)
 );
 create table PRODUCT
 (
     ID              integer      not null,
-    NAME            varchar(255) not null,
+    PRODUCT            varchar(255) not null,
     primary key (ID)
 );
 create table PRICES

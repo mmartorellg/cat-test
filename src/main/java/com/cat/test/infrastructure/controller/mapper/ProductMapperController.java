@@ -5,7 +5,7 @@ import com.cat.test.infrastructure.controller.model.ProductRequest;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface ProductMapper {
+public interface ProductMapperController {
 
     ProductRequest toRequest(Product product);
 
