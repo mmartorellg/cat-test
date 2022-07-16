@@ -16,6 +16,10 @@ public class GenericAdapter {
 
     private final NamedParameterJdbcTemplate template;
 
+    public <T> List<T> queryForList(String sql, Map<String, Object> params, Class<T> clazz) {
+        return template.query(sql, params, new BeanPropertyRowMapper<>(clazz));
+    }
+
     public GenericAdapter(NamedParameterJdbcTemplate template) {
         this.template = template;
     }

@@ -20,8 +20,8 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>("Entity not found", HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> globalExceptionsHandler(Exception ex, WebRequest request) {
-        return new ResponseEntity<>("Server error ocurred", HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+//    @ExceptionHandler(Exception.class)
+//    public ResponseEntity<String> globalExceptionsHandler(Exception ex, WebRequest request) {
+//        return new ResponseEntity<>("Server error ocurred", HttpStatus.INTERNAL_SERVER_ERROR);
+//    }
 }

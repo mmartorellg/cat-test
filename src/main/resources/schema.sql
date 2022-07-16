@@ -10,7 +10,7 @@ create table PRODUCT
     PRODUCT            varchar(255) not null,
     primary key (ID)
 );
-create table PRICES
+create table PRICE
 (
     ID         integer    not null,
     BRAND_ID   integer    not null,

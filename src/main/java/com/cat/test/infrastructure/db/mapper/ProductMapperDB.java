@@ -12,10 +12,10 @@ import java.util.Map;
 public interface ProductMapperDB {
 
     default Map<String, Object> toMap(Product product) {
-        Map<String, Object> productMap = new HashMap<>();
-        productMap.put("id", product.getId());
-        productMap.put("product", product.getProduct());
-        return productMap;
+        return Map.of(
+                "id", product.getId(),
+                "product", product.getProduct()
+        );
     }
 
     Product toDomain(ProductDao productDao);

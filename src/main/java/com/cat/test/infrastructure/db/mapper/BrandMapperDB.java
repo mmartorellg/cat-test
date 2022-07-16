@@ -11,10 +11,10 @@ import java.util.Map;
 public interface BrandMapperDB {
 
     default Map<String, Object> toMap(Brand brand) {
-        Map<String, Object> brandMap = new HashMap<>();
-        brandMap.put("id", brand.getId());
-        brandMap.put("brand", brand.getBrand());
-        return brandMap;
+        return Map.of(
+                "id", brand.getId(),
+                "brand", brand.getBrand()
+        );
     }
 
     Brand toDomain(BrandDao brandDao);

@@ -1,15 +1,19 @@
 package com.cat.test.infrastructure.controller.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.util.Date;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductRequest {
-    Integer id;
-    String product;
+public class PriceQueryRequest {
+    Integer productId;
+    Integer brandId;
+    @JsonFormat(pattern = "yyyy-MM-dd-HH.mm.ss")
+    Date queryDate;
 }
