@@ -4,7 +4,7 @@ import com.cat.test.domain.Brand;
 import com.cat.test.infrastructure.controller.model.BrandRequest;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface BrandMapper {
 
     BrandRequest toRequest(Brand brand);

@@ -27,7 +27,7 @@ public class BrandController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<BrandRequest> getBrand(@PathVariable final Long id) {
+    public ResponseEntity<BrandRequest> getBrand(@PathVariable final Integer id) {
         return null;
     }
 

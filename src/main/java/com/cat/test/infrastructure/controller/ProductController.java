@@ -28,7 +28,7 @@ public class ProductController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<ProductRequest> getProduct(@PathVariable final Long id) {
+    public ResponseEntity<ProductRequest> getProduct(@PathVariable final Integer id) {
         return null;
     }
 
