@@ -24,6 +24,6 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> globalExceptionsHandler(Exception ex, WebRequest request) {
         log.error("globalExceptionsHandler {}", ex.getMessage());
-        return new ResponseEntity<>("Server error ocurred", HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>("Server error occurred", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
