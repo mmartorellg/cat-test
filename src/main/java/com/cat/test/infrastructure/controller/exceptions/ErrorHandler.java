@@ -1,6 +1,6 @@
 package com.cat.test.infrastructure.controller.exceptions;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.util.NoSuchElementException;
 
 @RestControllerAdvice
+@Slf4j
 public class ErrorHandler extends ResponseEntityExceptionHandler {
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
@@ -20,8 +21,9 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>("Entity not found", HttpStatus.NOT_FOUND);
     }
 
-//    @ExceptionHandler(Exception.class)
-//    public ResponseEntity<String> globalExceptionsHandler(Exception ex, WebRequest request) {
-//        return new ResponseEntity<>("Server error ocurred", HttpStatus.INTERNAL_SERVER_ERROR);
-//    }
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> globalExceptionsHandler(Exception ex, WebRequest request) {
+        log.error("globalExceptionsHandler {}", ex.getMessage());
+        return new ResponseEntity<>("Server error ocurred", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
